@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "1",
+    "name": "Spring Sale",
+    "client": "Nike",
+    "startDate": "2025-03-01T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "_id": "2",
+    "name": "Summer Kickoff",
+    "client": "Adidas",
+    "startDate": "2025-06-15T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "_id": "3",
+    "name": "Back to School",
+    "client": "Apple",
+    "startDate": "2024-08-01T00:00:00.000Z",
+    "status": "Completed"
+  }
+]
