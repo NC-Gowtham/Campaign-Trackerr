@@ -39,22 +39,22 @@ export default function CampaignForm({ onAdd, token }){
   }
 
   return (
-    <form className="card small" onSubmit={submit}>
+    <form className="card small animated-card" onSubmit={submit}>
       <h3>Add Campaign</h3>
       {msg && <div className={msg.type}>{msg.text}</div>}
       <label>Campaign Name</label>
-      <input value={name} onChange={e=>setName(e.target.value)} />
+      <input className="input" value={name} onChange={e=>setName(e.target.value)} />
       <label>Client Name</label>
-      <input value={client} onChange={e=>setClient(e.target.value)} />
+      <input className="input" value={client} onChange={e=>setClient(e.target.value)} />
       <label>Start Date</label>
-      <input type="date" value={startDate} onChange={e=>setStartDate(e.target.value)} />
+      <input className="input" type="date" value={startDate} onChange={e=>setStartDate(e.target.value)} />
       <label>Status</label>
-      <select value={status} onChange={e=>setStatus(e.target.value)}>
+      <select className="input" value={status} onChange={e=>setStatus(e.target.value)}>
         <option>Active</option>
         <option>Paused</option>
         <option>Completed</option>
       </select>
-      <button type="submit">Add</button>
+      <button className="btn primary" type="submit">Add</button>
     </form>
   );
 }

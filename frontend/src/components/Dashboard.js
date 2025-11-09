@@ -20,7 +20,7 @@ export default function Dashboard({ campaigns }) {
   }, [campaigns]);
 
   return (
-    <div className="card">
+    <div className="card animated-card">
       <h3>Dashboard Summary</h3>
       <div className="dashboard-summary">
         <SummaryItem count={stats.total} title="Total Campaigns" />

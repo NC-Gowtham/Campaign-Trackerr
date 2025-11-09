@@ -143,3 +143,123 @@ button.danger:hover {
   color: #555;
   margin-top: 5px;
 }
+
+:root{
+  --bg-1: #f7f9fc;
+  --card-bg: #ffffff;
+  /* Updated to a teal -> indigo gradient for a professional, modern look */
+  --accent-1: #0ea5a4; /* teal */
+  --accent-2: #2563eb; /* indigo */
+  --accent-grad: linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  --muted: #6b7280;
+}
+
+body{
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(37,117,252,0.06), transparent), radial-gradient(900px 400px at 90% 90%, rgba(106,17,203,0.05), transparent), var(--bg-1);
+}
+
+.auth-wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 0 10px;
+}
+
+.auth-card{
+  position:relative;
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.98));
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(25, 41, 61, 0.08);
+  padding:32px;
+  width:100%;
+  max-width:420px;
+  transform: translateY(20px);
+  animation: floatIn 600ms cubic-bezier(.2,.9,.2,1) both;
+  border: 1px solid rgba(37,117,252,0.06);
+}
+
+.auth-card::before{
+  content: '';
+  position: absolute;
+  left: -40%;
+  top: -30%;
+  width: 220%;
+  height: 140%;
+  background: var(--accent-grad);
+  filter: blur(40px) saturate(120%);
+  opacity: 0.08;
+  transform: rotate(-15deg);
+  pointer-events: none; /* ensure decorative layer does not block clicks */
+}
+
+@keyframes floatIn{
+  from { opacity: 0; transform: translateY(24px) scale(.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.input{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(15,23,42,0.06);
+  transition: box-shadow .18s ease, transform .12s ease, border-color .12s ease;
+}
+
+.input:focus{
+  outline: none;
+  box-shadow: 0 6px 18px rgba(37,117,252,0.08);
+  border-color: rgba(37,117,252,0.4);
+  transform: translateY(-2px);
+}
+
+.btn{
+  display:inline-block;
+  border-radius:10px;
+  padding:10px 16px;
+  font-weight:700;
+  letter-spacing:0.2px;
+  border:none;
+  transition: transform .14s cubic-bezier(.2,.9,.2,1), box-shadow .14s, opacity .12s;
+  cursor:pointer;
+}
+
+.btn.primary{
+  background: var(--accent-grad);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(38,117,252,0.14);
+}
+
+.btn.primary:hover{ transform: translateY(-4px) scale(1.01); box-shadow: 0 14px 34px rgba(38,117,252,0.18); }
+.btn.primary:active{ transform: translateY(-1px); }
+
+.btn.danger{
+  background: linear-gradient(90deg,#ff6b6b,#ff4757);
+  color:#fff;
+}
+
+.card.animated-card{
+  border-radius:12px;
+  padding:22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.98));
+  transform-origin: center top;
+  animation: cardPop .5s cubic-bezier(.2,.9,.2,1) both;
+}
+
+@keyframes cardPop{
+  from { opacity:0; transform: translateY(10px) scale(.997); }
+  to { opacity:1; transform: translateY(0) scale(1); }
+}
+
+.summary-item{
+  transition: transform .25s cubic-bezier(.2,.9,.2,1), box-shadow .25s;
+}
+.summary-item:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(12,38,77,0.06); }
+
+/* Table row hover */
+.campaign-table tbody tr:hover td{ background: linear-gradient(90deg, rgba(37,117,252,0.02), rgba(106,17,203,0.01)); }
+
+/* subtle button focus outline for accessibility */
+.btn:focus{ box-shadow: 0 0 0 4px rgba(37,117,252,0.12); outline:none; }
+
+/* small utility */
+.center { text-align:center }

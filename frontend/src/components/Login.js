@@ -26,14 +26,20 @@ export default function Login({ onLogin }){
   }
 
   return (
-    <form className="card" onSubmit={submit}>
-      <h2>Login</h2>
-      {error && <div className="error">{error}</div>}
-      <label>Username</label>
-      <input value={username} onChange={e=>setUsername(e.target.value)} placeholder="admin" />
-      <label>Password</label>
-      <input type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="password" />
-      <button type="submit">Login</button>
-    </form>
+    <div className="auth-wrapper">
+      <form className="card auth-card" onSubmit={submit}>
+        <h2 style={{margin:0, marginBottom:8, background: 'transparent', backgroundClip: 'text', color: 'transparent', WebkitBackgroundClip: 'text', backgroundImage: 'linear-gradient(90deg,#6a11cb,#2575fc)'}}>Welcome back</h2>
+        <p style={{marginTop:0, marginBottom:12, color:'var(--muted)'}}>Sign in to manage your campaigns</p>
+        {error && <div className="error">{error}</div>}
+        <label>Username</label>
+        <input className="input" value={username} onChange={e=>setUsername(e.target.value)} placeholder="your username" />
+        <label>Password</label>
+        <input className="input" type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="your password" />
+        <div style={{display:'flex', gap:10, alignItems:'center', marginTop:6}}>
+          <button className="btn primary" type="submit">Login</button>
+          <div style={{flex:1}} />
+        </div>
+      </form>
+    </div>
   );
 }

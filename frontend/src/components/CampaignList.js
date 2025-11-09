@@ -56,10 +56,11 @@ export default function CampaignList({ campaigns, token, onUpdate, onDelete }){
   }, [campaigns, filter]);
 
   return (
-    <div className="card">
+    <div className="card animated-card">
       <h3>Campaigns</h3>
       <input 
-        style={{width: '100%', boxSizing: 'border-box', marginBottom: '15px', padding: '10px'}}
+        className="input"
+        style={{width: '100%', boxSizing: 'border-box', marginBottom: '15px'}}
         value={filter}
         onChange={e => setFilter(e.target.value)}
         placeholder="Search by name or client..."
@@ -93,7 +94,7 @@ export default function CampaignList({ campaigns, token, onUpdate, onDelete }){
                 </select>
               </td>
               <td>
-                <button className="danger" onClick={() => deleteCampaign(c._id)}>Delete</button>
+                <button className="btn danger" onClick={() => deleteCampaign(c._id)}>Delete</button>
               </td>
             </tr>
           ))}
