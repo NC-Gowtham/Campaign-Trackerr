@@ -1,22 +1,23 @@
 import React, { useState, useMemo } from 'react';
+import { BASE_URL } from '../config';
 
-export default function CampaignList({ campaigns, token, onUpdate, onDelete }){
+export default function CampaignList({ campaigns, token, onUpdate, onDelete }) {
   const [filter, setFilter] = useState('');
 
-  async function updateStatus(id, status){
+  async function updateStatus(id, status) {
     try {
-      const res = await fetch('/api/campaigns/' + id, {
+      const res = await fetch(`${BASE_URL}/api/campaigns/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` 
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({ status })
       });
-      
+
       if (res.ok) {
         const updatedCampaign = await res.json();
-        onUpdate(updatedCampaign); 
+        onUpdate(updatedCampaign);
       } else {
         console.error("Failed to update status");
       }
@@ -25,23 +26,22 @@ export default function CampaignList({ campaigns, token, onUpdate, onDelete }){
     }
   }
 
-  async function deleteCampaign(id){
-    if(!window.confirm('Are you sure you want to delete this campaign?')) return;
+  async function deleteCampaign(id) {
+    if (!window.confirm('Are you sure you want to delete this campaign?')) return;
     try {
-      const res = await fetch('/api/campaigns/' + id, { 
+      const res = await fetch(`${BASE_URL}/api/campaigns/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      
+
       const data = await res.json();
 
       if (res.ok) {
-        onDelete(data.id); // Use the ID returned from the backend
+        onDelete(data.id);
       } else {
         console.error("Failed to delete campaign");
       }
-    } catch (err)
-      {
+    } catch (err) {
       console.error("Network error deleting campaign", err);
     }
   }
@@ -49,7 +49,7 @@ export default function CampaignList({ campaigns, token, onUpdate, onDelete }){
   const filteredCampaigns = useMemo(() => {
     if (!filter) return campaigns;
     const lowerFilter = filter.toLowerCase();
-    return campaigns.filter(c => 
+    return campaigns.filter(c =>
       c.name.toLowerCase().includes(lowerFilter) ||
       c.client.toLowerCase().includes(lowerFilter)
     );
@@ -58,9 +58,9 @@ export default function CampaignList({ campaigns, token, onUpdate, onDelete }){
   return (
     <div className="card animated-card">
       <h3>Campaigns</h3>
-      <input 
+      <input
         className="input"
-        style={{width: '100%', boxSizing: 'border-box', marginBottom: '15px'}}
+        style={{ width: '100%', boxSizing: 'border-box', marginBottom: '15px' }}
         value={filter}
         onChange={e => setFilter(e.target.value)}
         placeholder="Search by name or client..."
